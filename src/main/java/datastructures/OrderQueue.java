@@ -25,6 +25,11 @@ public class OrderQueue {
         return count == 0;
     }
 
+    // Returns the number of orders in the queue
+    public int getSize() {
+        return count;
+    }
+
     public boolean addOrder(Order order) {
         if (order == null) {
             return false;
