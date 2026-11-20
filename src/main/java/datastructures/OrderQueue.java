@@ -26,6 +26,10 @@ public class OrderQueue {
     }
 
     public boolean addOrder(Order order) {
+        if (order == null) {
+            return false;
+        }
+
         if (count == orders.length) return false;
 
         rear = (rear + 1) % orders.length;
