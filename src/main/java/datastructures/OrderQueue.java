@@ -35,6 +35,13 @@ public class OrderQueue {
         return orders.length;
     }
 
+    // Returns the next order without removing it
+    public Order peekNextOrder() {
+        if (isEmpty()) return null;
+
+        return orders[front];
+    }
+
     public boolean addOrder(Order order) {
         if (order == null) {
             return false;
