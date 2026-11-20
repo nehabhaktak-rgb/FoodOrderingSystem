@@ -3,13 +3,16 @@ package datastructures;
 
 import model.Order;
 
-/* Array-based queue. Orders are handled in FIFO order. */
+/*
+ * Array-based circular queue.
+ * Orders are processed in FIFO (First In, First Out) order.
+ */
 public class OrderQueue {
 
     private Order[] orders;
     private int front, rear, count;
 
-    // Constructor
+    // Constructor initializes the circular queue
     public OrderQueue(int size) {
         if (size <= 0) {
             throw new IllegalArgumentException("Queue size must be greater than zero.");
@@ -21,11 +24,12 @@ public class OrderQueue {
         count = 0;
     }
 
+    // Checks whether the queue is empty
     public boolean isEmpty() {
         return count == 0;
     }
 
-    // Returns the number of orders in the queue
+    // Returns the number of orders currently in the queue
     public int getSize() {
         return count;
     }
@@ -42,6 +46,7 @@ public class OrderQueue {
         return orders[front];
     }
 
+    // Adds an order at the rear of the queue
     public boolean addOrder(Order order) {
         if (order == null) {
             return false;
@@ -49,6 +54,7 @@ public class OrderQueue {
 
         if (count == orders.length) return false;
 
+        // Modulo allows rear to return to index 0 when the array ends
         rear = (rear + 1) % orders.length;
         orders[rear] = order;
         count++;
@@ -56,11 +62,14 @@ public class OrderQueue {
         return true;
     }
 
+    // Removes and returns the order at the front
     public Order processNextOrder() {
         if (isEmpty()) return null;
 
         Order order = orders[front];
         orders[front] = null;
+
+        // Modulo allows front to move circularly through the array
         front = (front + 1) % orders.length;
         count--;
 
