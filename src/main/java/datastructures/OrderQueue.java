@@ -66,4 +66,11 @@ public class OrderQueue {
 
         return order;
     }
+
+    // Removes all orders from the queue
+    public void clearQueue() {
+        while (!isEmpty()) {
+            processNextOrder();
+        }
+    }
 }
