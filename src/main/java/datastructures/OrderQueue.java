@@ -1,16 +1,12 @@
 package datastructures;
 import model.Order;
 /* Array-based queue. Orders are handled in FIFO order. */
-public OrderQueue(int size) {
-    if (size <= 0) {
-        throw new IllegalArgumentException("Queue size must be greater than zero.");
+public class OrderQueue {
+    private Order[] orders;
+    private int front, rear, count;
+    public OrderQueue(int size) {
+        orders = new Order[size]; front = 0; rear = -1; count = 0;
     }
-
-    orders = new Order[size];
-    front = 0;
-    rear = -1;
-    count = 0;
-}
     public boolean isEmpty() { return count == 0; }
     public boolean addOrder(Order order) {
         if (count == orders.length) return false;
