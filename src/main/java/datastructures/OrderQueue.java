@@ -30,6 +30,11 @@ public class OrderQueue {
         return count;
     }
 
+    // Returns the maximum capacity of the queue
+    public int getCapacity() {
+        return orders.length;
+    }
+
     public boolean addOrder(Order order) {
         if (order == null) {
             return false;
