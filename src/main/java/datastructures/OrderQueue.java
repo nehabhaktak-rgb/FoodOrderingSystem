@@ -29,6 +29,11 @@ public class OrderQueue {
         return count == 0;
     }
 
+    // Checks whether the queue is full
+    public boolean isFull() {
+        return count == orders.length;
+    }
+
     // Returns the number of orders currently in the queue
     public int getSize() {
         return count;
@@ -52,7 +57,7 @@ public class OrderQueue {
             return false;
         }
 
-        if (count == orders.length) return false;
+        if (isFull()) return false;
 
         // Modulo allows rear to return to index 0 when the array ends
         rear = (rear + 1) % orders.length;
